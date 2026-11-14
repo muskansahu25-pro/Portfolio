@@ -752,6 +752,25 @@ a {
   .hamburger::before { top: -7px; }
   .hamburger::after { top: 7px; }
 /* Mobile Responsive */
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: rgba(3, 7, 18, 0.95);
+    padding: 1.5rem 0;
+  }
+
+  .nav-links.open {
+    display: block;
+  }
+
+  .nav-links ul {
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  
 @media (max-width: 900px) {
   .hero-container {
     grid-template-columns: 1fr;
