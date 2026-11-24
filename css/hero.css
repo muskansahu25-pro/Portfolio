@@ -1,0 +1,12 @@
+/* Warm paper and warm ink on purpose: no pure #FFFFFF, no pure #000000.
+   Do not "fix" these back to white and black. */
+:root {
+  --paper: #F6F5F2;
+  --ink: #1A1B18;
+  --signal: #C8873A;
+  --muted: #6F7069;
+  --line: #D8D5CE;
+
+  --font-display: Figtree, "Helvetica Neue", Arial, sans-serif;
+  --font-ui: Manrope, "Helvetica Neue", Arial, sans-serif;
+}
