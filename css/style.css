@@ -343,7 +343,7 @@ body::before{opacity:.25}
 #home .cartoon{animation:none;transform:none}
 #home .hero-photo{
   height:clamp(500px,80vh,800px);
-  margin-left:-10%;
+  margin-left:0%;
 }
 
 /* ===== ABOUT: photo-booth page ===== */
@@ -390,3 +390,100 @@ body::before{opacity:.25}
   #home .hero{height:auto}
   .about2{height:auto}
 }
+
+/* ===== full-screen layout ===== */
+body{padding:12px}
+.slide{max-width:none;width:100%;margin:0 0 16px;padding-left:9vw;padding-right:5vw;border-radius:28px}
+.contents,.contact{max-width:1000px;margin-left:auto;margin-right:auto}
+#about.slide{padding-left:0;padding-right:0}
+
+/* ===== ABOUT: strips full height like the reference, title over them ===== */
+.booth{
+  top:-30px;bottom:-30px;right:12vw;
+  transform:none;
+  display:flex;gap:10px;align-items:stretch;
+}
+.booth-strip{height:100%;justify-content:space-between;padding:8px}
+.booth-strip img{flex:1;min-height:0;width:clamp(140px,13vw,230px);aspect-ratio:auto}
+.sa{transform:translateY(-18px) rotate(-1.5deg)}
+.sb{transform:translateY(18px) rotate(1.5deg)}
+
+.about-title{
+  right:calc(8vw + 40vw);
+  text-shadow:none;
+  animation:draw linear both;
+  animation-timeline:view();
+  animation-range:entry 10% cover 35%;
+}
+@keyframes draw{
+  from{clip-path:inset(-10% 100% -10% -5%)}
+  to{clip-path:inset(-10% -5% -10% -5%)}
+}
+
+/* ===== TWINKLING STARS ===== */
+.tw{
+  position:absolute;z-index:0;pointer-events:none;
+  background:#fff;
+  clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%); /* 4-point sparkle */
+  filter:drop-shadow(0 0 6px #fff9);
+  animation:twinkle ease-in-out infinite;
+}
+.tw.five{clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}
+.tw.gold{background:#ffe58a}
+@keyframes twinkle{
+  0%,100%{opacity:.2;transform:scale(.55) rotate(0deg)}
+  50%{opacity:1;transform:scale(1.15) rotate(120deg)}
+}
+
+/* ===== CONTENTS: like the reference ===== */
+#contents.slide{padding:0;height:min(92vh,860px);min-height:560px;overflow:hidden}
+.contents2{height:100%;display:grid;grid-template-columns:auto minmax(260px,32%) 1fr;align-items:center;gap:3vw;padding:0 6vw}
+.contents2 .vertical{font-size:clamp(4rem,9vw,8rem);line-height:1;margin:0}
+
+/* photo with white sticker outline, sitting on the card's bottom edge */
+.c-photo{position:relative;height:100%;display:flex;align-items:flex-end}
+.c-img{height:84%;width:auto;max-width:100%;margin-bottom:-24px;transform:rotate(-3deg);
+  filter:drop-shadow(4px 0 0 #fff) drop-shadow(-4px 0 0 #fff) drop-shadow(0 4px 0 #fff) drop-shadow(0 -4px 0 #fff) drop-shadow(0 10px 16px #0004)}
+.c-star{left:-8%;bottom:8%;width:96px;height:96px}
+
+/* cute handwriting word search */
+.c-grid{position:relative}
+.wordsearch{font-family:'Gochi Hand',cursive;font-size:clamp(1.7rem,2.9vw,2.7rem);letter-spacing:.28em;color:#f7c6d8;margin:0}
+.wordsearch a{font-family:inherit;border-width:3px;letter-spacing:.2em;padding:0 16px}
+
+/* small handwritten notes around the grid */
+.note{position:absolute;font-family:'Gochi Hand',cursive;font-size:1.5rem;color:#fff;transform:rotate(-4deg)}
+.n1{top:-34px;left:8%}
+.n2{bottom:-40px;right:2%;transform:rotate(3deg)}
+
+@media(max-width:800px){
+  #contents.slide{height:auto;padding:40px 16px}
+  .contents2{grid-template-columns:1fr;height:auto;padding:0;gap:24px}
+  .contents2 .vertical{writing-mode:horizontal-tb;transform:none;font-size:3rem}
+  .c-photo{height:auto;justify-content:center}
+  .c-img{height:300px;margin-bottom:0}
+  .wordsearch{font-size:1.2rem;letter-spacing:.12em}
+  .n1,.n2{position:static;display:block;margin:8px 0}
+}
+
+/* ===== CONTENTS: fit inside the card, easier to read ===== */
+#contents.slide{height:auto;min-height:min(92vh,860px);padding:0}
+.contents2{min-height:min(92vh,860px);align-items:stretch;padding:0 6vw}
+.contents2 .vertical{align-self:center;font-size:clamp(3rem,6vw,5.5rem)}
+.c-grid{align-self:center;padding:50px 0}
+
+/* filler letters: plain serif, soft pink. Only the circled words use the cute font */
+.wordsearch{font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,1.8vw,1.8rem);line-height:1.4;letter-spacing:.3em;gap:2px}
+.wordsearch a{font-family:'Gochi Hand',cursive;font-size:1.15em;letter-spacing:.12em;padding:0 14px;border-width:2.5px}
+
+
+/* ===== CONTENTS: fit inside the card, easier to read ===== */
+#contents.slide{height:auto;min-height:min(92vh,860px);padding:0}
+.contents2{min-height:min(92vh,860px);align-items:stretch;padding:0 6vw}
+.contents2 .vertical{align-self:center;font-size:clamp(3rem,6vw,5.5rem)}
+.c-grid{align-self:center;padding:50px 0}
+
+/* filler letters: plain serif, soft pink. Only the circled words use the cute font */
+.wordsearch{font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,1.8vw,1.8rem);line-height:1.4;letter-spacing:.3em;gap:2px}
+.wordsearch a{font-family:'Gochi Hand',cursive;font-size:1.15em;letter-spacing:.12em;padding:0 14px;border-width:2.5px}
+

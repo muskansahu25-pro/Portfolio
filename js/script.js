@@ -47,3 +47,24 @@ document.querySelectorAll('img').forEach(img => {
   img.addEventListener('error', flag);
   if (img.complete && img.naturalWidth === 0) flag();
 });
+
+// ===== TWINKLING STARS in the hero =====
+const twCard = document.querySelector('#home');
+if (twCard) {
+  // [left %, top %, size px]
+  const spots = [
+    [6,12,24],[16,70,14],[30,9,12],[42,22,28],[54,7,16],[60,40,12],[70,15,22],
+    [80,52,14],[90,8,30],[92,34,12],[12,42,18],[48,58,10],[66,80,16],[26,86,12],
+    [84,76,20],[36,46,10]
+  ];
+  spots.forEach(([x, y, s], i) => {
+    const el = document.createElement('i');
+    el.className = 'tw' + (i % 3 === 0 ? ' five' : '') + (i % 4 === 1 ? ' gold' : '');
+    el.style.cssText =
+      `left:${x}%;top:${y}%;width:${s}px;height:${s}px;` +
+      `animation-duration:${(2.2 + Math.random() * 2.6).toFixed(1)}s;` +
+      `animation-delay:${(Math.random() * 3).toFixed(1)}s`;
+    twCard.appendChild(el);
+  });
+}
+
